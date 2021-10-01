@@ -20,7 +20,7 @@ class LivroController(
 ) {
 
     @PostMapping
-    fun cria(@Valid @RequestBody request: LivroRequest, uriBuilder: UriComponentsBuilder): ResponseEntity<Any> {
+    fun novo(@Valid @RequestBody request: LivroRequest, uriBuilder: UriComponentsBuilder): ResponseEntity<Any> {
 
         val autor = autorRepository.findById(request.autor).get()
         val categoria = categoriaRepository.findById(request.categoria).get()

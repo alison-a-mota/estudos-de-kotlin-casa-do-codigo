@@ -6,7 +6,7 @@ import kotlin.reflect.KClass
 
 @Target(AnnotationTarget.FIELD)
 @Retention(AnnotationRetention.RUNTIME)
-@Constraint(validatedBy = [ExistsIdValidator::class])
+@Constraint(validatedBy = [ExistsByIdValidator::class])
 @MustBeDocumented
 annotation class ExistsById(
     val message: String = "ID não encontrado.",

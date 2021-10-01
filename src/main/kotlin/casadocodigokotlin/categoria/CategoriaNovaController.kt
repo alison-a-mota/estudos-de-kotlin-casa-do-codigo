@@ -11,10 +11,10 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/categoria")
-class CategoriaController(private val categoriaRepository: CategoriaRepository) {
+class CategoriaNovaController(private val categoriaRepository: CategoriaRepository) {
 
     @PostMapping
-    fun cria(@Valid @RequestBody request: CategoriaRequest, uriBuilder: UriComponentsBuilder): ResponseEntity<Any> {
+    fun nova(@Valid @RequestBody request: CategoriaRequest, uriBuilder: UriComponentsBuilder): ResponseEntity<Any> {
         val categoria = request.toModel()
         categoriaRepository.save(categoria)
 
@@ -24,8 +24,5 @@ class CategoriaController(private val categoriaRepository: CategoriaRepository) 
             .toUri()
 
         return ResponseEntity.created(location).build()
-
     }
-
-
 }

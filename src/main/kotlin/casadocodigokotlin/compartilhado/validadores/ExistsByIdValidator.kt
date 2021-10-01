@@ -5,7 +5,7 @@ import javax.validation.ConstraintValidator
 import javax.validation.ConstraintValidatorContext
 import kotlin.reflect.KClass
 
-class ExistsIdValidator (private val manager: EntityManager) : ConstraintValidator<ExistsById, Any> {
+class ExistsByIdValidator (private val manager: EntityManager) : ConstraintValidator<ExistsById, Any> {
 
     private var fieldName: String? = null
     private var entityClass: KClass<*>? = null

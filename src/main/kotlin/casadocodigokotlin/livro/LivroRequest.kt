@@ -20,6 +20,7 @@ data class LivroRequest(
     @field:NotNull @field:ExistsById(fieldName = "id", entityClass = Autor::class) val autor: Long
 ) {
     fun toModel(autor: Autor, categoria: Categoria): Livro {
-        return Livro(titulo, resumo, sumario, lsbn, dataPublicacao, preco, paginas, categoria, autor)
+        return Livro(titulo = titulo, resumo = resumo, sumario = sumario, lsbn = lsbn,
+            dataPublicacao = dataPublicacao, preco = preco, paginas = paginas, categoria = categoria, autor = autor)
     }
 }

@@ -2,7 +2,6 @@ package casadocodigokotlin.livro
 
 import casadocodigokotlin.autor.Autor
 import casadocodigokotlin.categoria.Categoria
-import casadocodigokotlin.compartilhado.validadores.Unico
 import java.math.BigDecimal
 import java.time.LocalDate
 import javax.persistence.*
