@@ -2,11 +2,10 @@ package casadocodigokotlin.livro
 
 import casadocodigokotlin.autor.AutorRepository
 import casadocodigokotlin.categoria.CategoriaRepository
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 import java.net.URI
 import javax.validation.Valid
@@ -20,7 +19,7 @@ class LivroController(
 ) {
 
     @PostMapping
-    fun novo(@Valid @RequestBody request: LivroRequest, uriBuilder: UriComponentsBuilder): ResponseEntity<Any> {
+    fun cria(@Valid @RequestBody request: LivroRequest, uriBuilder: UriComponentsBuilder): ResponseEntity<Any> {
 
         val autor = autorRepository.findById(request.autor).get()
         val categoria = categoriaRepository.findById(request.categoria).get()
@@ -34,5 +33,11 @@ class LivroController(
             .toUri()
 
         return ResponseEntity.created(location).build()
+    }
+
+    @GetMapping
+    fun lista(paginacao: Pageable): ResponseEntity<Page<LivroResponse>> {
+        val listaDeLivros = livroRepository.findAll(paginacao)
+        return ResponseEntity.ok(LivroResponse.of(listaDeLivros))
     }
 }

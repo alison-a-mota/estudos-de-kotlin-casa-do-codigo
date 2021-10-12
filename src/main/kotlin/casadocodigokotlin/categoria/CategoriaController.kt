@@ -11,7 +11,7 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/categoria")
-class CategoriaNovaController(private val categoriaRepository: CategoriaRepository) {
+class CategoriaController(private val categoriaRepository: CategoriaRepository) {
 
     @PostMapping
     fun nova(@Valid @RequestBody request: CategoriaRequest, uriBuilder: UriComponentsBuilder): ResponseEntity<Any> {
